@@ -1,0 +1,33 @@
+---
+name: Sleep
+version: 0.0.3
+author:
+  - 'Peter Stuifzand E<lt>peter@stuifzand.euE<gt>'
+abstract: A library for making REST web applications.
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
+  Carp: 0
+  DBIx::DWIW: 0.48
+  JSON::XS: 0
+provides:
+  Sleep:
+    file: lib/Sleep.pm
+    version: 0.0.3
+  Sleep::Constant:
+    file: lib/Sleep/Constant.pm
+  Sleep::Handler:
+    file: lib/Sleep/Handler.pm
+  Sleep::Request:
+    file: lib/Sleep/Request.pm
+  Sleep::Resource:
+    file: lib/Sleep/Resource.pm
+  Sleep::Response:
+    file: lib/Sleep/Response.pm
+  Sleep::Routes:
+    file: lib/Sleep/Routes.pm
+generated_by: Module::Build version 0.2808
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
