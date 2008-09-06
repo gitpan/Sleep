@@ -18,18 +18,6 @@ sub BUILD {
     return bless { db => $db, routes => $routes }, $klass;
 }
 
-sub read_post {
-    my ($r) = @_;
-
-    my $str = '';
-    my $buf = '';
-    
-    while ($r->read($buf, 1024) >= 1024) {
-        $str .= $buf;
-    }
-    return $str;
-}
-
 sub handler : method {
     my $self = shift;
     my $r    = shift;
@@ -100,7 +88,81 @@ __END__
 
 Sleep::Handler - ModPerl handler for Sleep.
 
+=head1 SYNOPSYS
+
+I added this code in a Apache2 vhost file, for a example project that I created with Sleep, called QA.
+
+    <Perl>
+        use QA::Handler;
+        $QA::Global::object = QA::Handler->new();
+    </Perl>
+
+    <Location />
+        SetHandler perl-script
+        PerlResponseHandler $QA::Global::object->handler
+    </Location>
+
+The QA::Handler file looks like this:
+
+    package QA::Handler;
+
+    use strict;
+    use warnings;
+
+    use QA::DB;
+
+    require Sleep::Handler;
+    our @ISA = qw/Sleep::Handler/;
+
+    my $db = QA::DB->Connect('QA');
+
+    my $routes = Sleep::Routes->new([
+        { 
+            route => qr{/question(?:/(\d+))?$},
+            class => 'QA::Question' 
+        },
+        { 
+            route => qr{/question/(\d+)/comments$},
+            class => 'QA::Comment' 
+        },
+    ]);
+
+    sub new {
+        return __PACKAGE__->BUILD($db, $routes);
+    }
+
+    sub handler : method {
+        my $self = shift;
+        return $self->SUPER::handler(@_);
+    }
+
+The module QA::DB is a subclass of DBIx::DWIW.
+
 =head1 DESCRIPTION
+
+The Apache2 mod_perl handler for Sleep applications.
+
+=head1 CLASS METHODS
+
+=over 4
+
+=item BUILD($db, $routes)
+
+Creates a Sleep::Handler object. Expects two arguments: C<$db> and C<routes>.
+
+
+=back
+
+
+=head1 METHODS
+
+=over 4
+
+=item handler
+
+Handles a HTTP request.
+
+=back
 
 =head1 BUGS
 
@@ -112,7 +174,6 @@ Copyright (c) 2008 Peter Stuifzand.  All rights reserved.
 
 This library is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
-
 
 =head1 AUTHOR
 

@@ -46,6 +46,34 @@ Sleep::Response - A Sleep response
 
 =head1 DESCRIPTION
 
+
+=head1 CLASS METHODS
+
+=over 4
+
+=item CLASS->new($hash_ref)
+
+Has two optional parameters: C<data> and C<location>.
+
+=back
+
+=head1 METHODS
+
+=over 4
+
+=item data
+
+Returns the data of this response.
+
+=item location()
+
+Returns the location that was specified for this response. This value will be
+used by L<Sleep::Handler|Sleep::Handler> to set the C<Location> HTTP header.
+
+=item encode($mime_type)
+
+=back
+
 =head1 BUGS
 
 If you find a bug, please let the author know.
@@ -60,4 +88,5 @@ modify it under the same terms as Perl itself.
 =head1 AUTHOR
 
 Peter Stuifzand E<lt>peter@stuifzand.euE<gt>
+
 

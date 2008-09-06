@@ -46,6 +46,37 @@ Sleep::Request - A Sleep request.
 
 =head1 DESCRIPTION
 
+=head1 CLASS METHODS 
+
+=over 4
+
+=item new
+
+Constructor. Needs three arguments: C<request>, the apache request; C<db>, a
+database object; and C<vars>, an array with the variables parsed from the URL.
+
+=back
+
+=head1 METHODS 
+
+=over 4
+
+=item id
+
+Returns the first variable from C<vars>.
+
+=item decode($data)
+
+Parses the JSON data in C<$data> to a perl representation. Retrieve this value using C<data>.
+
+=item data
+
+Return the parsed data object.
+
+=back
+
+
+
 =head1 BUGS
 
 If you find a bug, please let the author know.

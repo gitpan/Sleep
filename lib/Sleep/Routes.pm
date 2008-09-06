@@ -47,7 +47,47 @@ __END__
 
 Sleep::Routes - From URI to classname.
 
+=head1 SYNOPSYS
+
+    my $routes = Sleep::Routes->new([
+        { 
+            route => qr{/question(?:/(\d+))?$},
+            class => 'QA::Question' 
+        },
+        { 
+            route => qr{/question/(\d+)/comments$},
+            class => 'QA::Comment' 
+        },
+    ]);
+
 =head1 DESCRIPTION
+
+=head1 CLASS METHODS
+
+=over 4
+
+=item Sleep::Routes->new([ ROUTES ])
+
+A route should contain at least two entries: C<route> and C<class>. The C<route> is a regular expression
+which will be matched to an URL. The C<class> should the name of a subclass of C<Sleep::Resource> which will
+work with the arguments.
+
+=back
+
+=head1 METHODS
+
+=over 4
+
+=item SELF->resource(URL)
+
+Returns the first route that matched and the variables from the URL that were
+parsed from it.
+
+=item SELF->parse_url(URL)
+
+Does the actual check of URL described in L<resource>
+
+=back
 
 =head1 BUGS
 

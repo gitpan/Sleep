@@ -1,6 +1,6 @@
 ---
 name: Sleep
-version: 0.0.3
+version: 0.0.4
 author:
   - 'Peter Stuifzand E<lt>peter@stuifzand.euE<gt>'
 abstract: A library for making REST web applications.
@@ -11,12 +11,12 @@ requires:
   Carp: 0
   DBIx::DWIW: 0.48
   JSON::XS: 0
+build_requires:
+  Apache::Test: 1.12
 provides:
   Sleep:
     file: lib/Sleep.pm
-    version: 0.0.3
-  Sleep::Constant:
-    file: lib/Sleep/Constant.pm
+    version: 0.0.4
   Sleep::Handler:
     file: lib/Sleep/Handler.pm
   Sleep::Request:
@@ -27,6 +27,10 @@ provides:
     file: lib/Sleep/Response.pm
   Sleep::Routes:
     file: lib/Sleep/Routes.pm
+  SleepTest::Handler:
+    file: lib/SleepTest/Handler.pm
+  SleepTest::Test1:
+    file: lib/SleepTest/Test1.pm
 generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

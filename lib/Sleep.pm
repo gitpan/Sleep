@@ -2,7 +2,7 @@ package Sleep;
 use strict;
 use warnings;
 
-our $VERSION = '0.0.3';
+our $VERSION = '0.0.4';
 
 1;
 
@@ -24,7 +24,7 @@ catch get, post, put and delete requests to it.
 
 =head1 VERSION
 
-0.0.3
+0.0.4
 
 =head1 LIMITATIONS
 

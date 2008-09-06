@@ -44,6 +44,41 @@ Sleep::Handler - A Sleep resource.
 Resources are the main objects in a REST-ful application. Each thing in a
 website should be represented with one Resource class.
 
+This base class contains four methods for the different operations that will
+C<croak> when called.
+
+=head1 CLASS METHODS 
+
+=over 4
+
+=item new
+
+Constructor. Will add the arguments as attributes to the object.
+
+=back
+
+=head1 METHODS
+
+=over 4
+
+=item get
+
+Implement C<get> to handle a GET request to this resource.
+
+=item post
+
+Implement C<post> to handle a POST request to this resource.
+
+=item put
+
+Implement C<put> to handle a PUT request to this resource.
+
+=item delete
+
+Implement C<delete> to handle a DELETE request to this resource.
+
+=back
+
 =head1 BUGS
 
 If you find a bug, please let the author know.
